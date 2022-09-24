@@ -1,0 +1,70 @@
+package com.example.leetcodetemplate;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class LeetcodeTemplateApplication {
+
+    public static void main(String[] args) {
+        System.out.println("Hello world");
+        SpringApplication.run(LeetcodeTemplateApplication.class, args);
+    }
+
+    //背包dp的二维dp思路。
+    //一个二维数组，其中一维代表当前「当前枚举到哪件物品」，另外一维「现在的剩余容量」，数组装的是「最大价值」。
+    //选下一个数的时候 用得上 现在的剩余容量 这个条件。从选最后一个物品开始思考。即思考选不选i，但最终选不选i的结果 都是从 i-1的基础上再求出的。
+    //根据 dp 数组不难得出状态定义：考虑前i件物品，使用容量不超过C的条件下的背包最大价值。
+    //根据「最后一步」选择来推导「状态转移方程」
+    //对于第i件物品，我们有「不选」和「选」两种决策。
+    //dp[i][c] = max(dp[i - 1][c], dp[i - 1][c - v[i]] + w[i])
+    //其中「选」的前提 要 满足 「当前剩余的背包容量」 >= 「物品的体积」。
+    public int maxValue999(int N, int C, int[] v, int[] w) {
+        //有N件物品和一个容量是C的背包。每件物品有且只有一件。第i件物品的体积是v[i] ，价值是w[i]。
+        //求解将哪些物品装入背包，可使这些物品的总体积不超过背包容量，且总价值最大。
+        int[][] dp = new int[N][C+1];
+
+        //先处理「考虑第一件物品」的情况，然后 现在剩余的容量从0到C (即 枚举到第一个物品，遍历从 不装 到 装满的情况)。应该是 为了求 数学归纳法的第一项、
+        //求下面会用到的dp[0][0~C]的值
+        for (int i = 0; i <= C; i++) {
+            //现在剩余的容量 大于等于 第一件物品的体积，则 dp的值都是 第一件物品的价值。如果 现在剩余的容量装不下 第一个 则dp值都是0。
+            dp[0][i] = (i >= v[0] ? w[0] : 0);
+        }
+        //再处理「考虑其余物品」的情况
+        for (int i = 1; i < N; i++) {
+            for (int j = 0; j < C + 1; j++) {
+                // 不选该物品
+                int n = dp[i-1][j];
+                // 选择该物品，前提「剩余容量」大于等于「物品体积」
+                int y = j >= v[i] ? dp[i-1][j-v[i]] + w[i] : 0;
+                dp[i][j] = Math.max(n, y);
+            }
+        }
+        return dp[N-1][C];
+    }
+
+    //背包dp 二维优化成一维。
+    //有N件物品和一个容量是C的背包。每件物品有且只有一件。第i件物品的体积是v[i] ，价值是w[i]。
+    //求解将哪些物品装入背包，可使这些物品的总体积不超过背包容量，且总价值最大。
+    //dp[i][c] = max(dp[i - 1][c], dp[i - 1][c - v[i]] + w[i])
+    //观察上面二维的状态转移方程,
+    //不难发现当求解第i行格子的值时，不仅是只依赖第i-1行，还明确只依赖第i-1行的第c个格子和第c-v[i]个格子（也就是对应着第i个物品不选和选的两种情况）。
+    //    c-v[i]           c
+    //                     c
+    //换句话说，只依赖于「上一个格子的位置」以及「上一个格子的左边位置」。
+    //可以优化成只保留代表「剩余容量」的维度的一维dp
+    //dp[c] = max(dp[c], dp[c - v[i]] + w[i])
+    public int maxValue888(int N, int C, int[] v, int[] w) {
+        int[] dp = new int [C + 1];
+        for (int i = 0; i < N; i++) { //从前i个物品中一次次选出来
+            for (int j = C; j >= v[i]; j--) { //从C往前推 直到v[i],这样选该物品时 就不用 再加条件了。
+                int no = dp[j]; //不选该物品，那dp值就是 上一行该列的值。
+                int yes = dp[j - v[i]] + w[i]; //选该物品，那dp值就是 （上一行减去 该物品空间的值 的列 再加上 该物品的价值）
+                dp[j] = Math.max(no, yes);
+            }
+        }
+
+        //返回最大容量时的dp值。
+        return dp[C];
+    }
+}
