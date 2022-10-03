@@ -34,10 +34,10 @@ public class LeetcodeTemplateApplication {
         for (int i = 1; i < N; i++) {
             for (int j = 0; j < C + 1; j++) {
                 // 不选该物品
-                int n = dp[i-1][j];
+                int no = dp[i - 1][j];
                 // 选择该物品，前提「剩余容量」大于等于「物品体积」
-                int y = j >= v[i] ? dp[i-1][j-v[i]] + w[i] : 0;
-                dp[i][j] = Math.max(n, y);
+                int yes = (j >= v[i] ? dp[i - 1][j - v[i]] + w[i] : 0);
+                dp[i][j] = Math.max(no, yes);
             }
         }
         return dp[N-1][C];
