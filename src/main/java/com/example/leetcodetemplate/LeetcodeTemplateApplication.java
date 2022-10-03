@@ -3,12 +3,55 @@ package com.example.leetcodetemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class LeetcodeTemplateApplication {
 
     public static void main(String[] args) {
         System.out.println("Hello world");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
+    }
+
+    //二分题模板.1.求要二分的范围。
+    //          2.求范围的中值。
+    //          3.把中值代入 根据结果 看取范围的左半部分 还是右半部分。小于等于 或 大于等于，即带等于号的 确定再次二分范围的时候 要包含中值。
+    //          4.继续不断二分 直到 范围只包含一个数，即l = r的情况，说明 找到唯一的数，退出循环。
+    //            因为结果肯定在范围里，又找到唯一的数，那所求就是该数，返回该数。
+    //875. 爱吃香蕉的珂珂
+    //这题暴力超时，一定要二分做。
+    //思路：piles数组的最大值为maxK， 结果就在[1, maxK]范围中，用二分来找符合题意的最小的。
+    //      求出中值，用中值求出总共花的时间。
+    //      所花时间比h长，说明效率低了，说明要从中值右边这块[k + 1, r]找；
+    //      所花时间小于等于h，说明就要从中值左边这块[l, k]找。 小于等于 或 大于等于，即带等于号的 确定范围的时候 要带上中值。
+    //      最后 l和r 重合，说明找到，退出循环，返回l或r都行 毕竟一样。
+    //      要把区间收到 l=r，因为结果肯定在[1, maxK]范围中，把区间缩到l=r，即只有一个数，那这个数肯定是所求。
+    //      不能直接二分的公式 找到sumH为h时就返回。因为sumH为 h时，k不一定是最小的，可能左边还有 符合的 更小的k，所以不能直接return。
+    public int minEatingSpeed(int[] piles, int h) {
+        int len = piles.length;
+        Arrays.sort(piles);
+        int maxK = piles[len - 1];
+
+        //确定二分范围[1, maxK]
+        int l = 1;
+        int r = maxK;
+        while (l < r){
+            //求出范围的中值k。
+//            int k = (l + r) / 2; //l+r结果数值过大会存在溢出，不推荐用
+//            int k = l + (r - l) / 2; //小的 加上 差值的一半 也是中值,不会有 溢出风险。
+//            int k = l / 2 + r / 2; //也不会有 溢出风险，但都是整数，我不知道结果对不对。
+            int k  = (l + r) >>> 1; //正数右移运算相当于除以二，l + r超int范围也没关系，最后能得到正确的平均值，而且效率高很多
+            double sumH = 0;
+            for (int j = 0; j < len; j++) {
+                sumH += (piles[j] - 1) / k + 1; //piles[j]/k 向上取整的值。 //这种向上取整更快。
+            }
+            //sumH为 h时，k不一定是最小的，可能左边还有 符合的 更小的k，所以不能直接return。
+            //要把区间收到 l=r，因为结果肯定在[1, maxK]范围中，把区间缩到l=r，即只有一个数，那这个数肯定是所求。
+            if (sumH > h) l = k + 1; //效率太低了，则要取右半边的，效率高点的，即[k + 1, r]
+            else r = k; //sumH <= h,耗时小于等于 h，说明当前猜的这个速度k可能是符合题意的一个解（不能排除掉，后面的搜索表示找有没有更小的速度），所以搜索范围是 [l, k]，设置 r = k。
+        }
+
+        return l;
     }
 
     //背包dp的二维dp思路。
