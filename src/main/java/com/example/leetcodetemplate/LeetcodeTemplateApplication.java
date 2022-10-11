@@ -13,6 +13,8 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
+
     //二分题模板.1.求要二分的范围。
     //          2.求范围的中值。
     //          3.把中值代入 根据结果 看取范围的左半部分 还是右半部分。小于等于 或 大于等于，即带等于号的 确定再次二分范围的时候 要包含中值。
