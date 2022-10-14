@@ -9,9 +9,26 @@ import java.util.Arrays;
 public class LeetcodeTemplateApplication {
 
     public static void main(String[] args) {
+        //int的范围是-2147483648~2147483647。//负21亿 到 正21亿, 大概是 2 * 10^9, 10的8次方是1亿， 10的9次方是10亿。
         System.out.println("Hello world");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
+
+
+    // (0)               0
+    // (1)               1
+    // (2)              10
+    // (3)              11
+    // (4)             100
+    // (5)             101
+    // (6)             110
+    // (7)             111
+    // (8)            1000
+    // (9)            1001
+    // (10)           1010
+
+
+
 
     //二分题模板.1.求要二分的范围。
     //          2.求范围的中值。
