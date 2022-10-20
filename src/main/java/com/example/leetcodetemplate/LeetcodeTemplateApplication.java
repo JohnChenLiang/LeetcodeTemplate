@@ -9,6 +9,10 @@ import java.util.Arrays;
 public class LeetcodeTemplateApplication {
 
     public static void main(String[] args) {
+
+        //当double类型小数点后超过3位就会按科学计数法显示：1.0E-4 ，即<=0.0001
+        //小数点前 超过7位数 也会按科学计数法显示。10^7，7个0是8位数 即一千万 就科学技术法了。。9999999还能正常显示，
+
         //int的范围是-2147483648~2147483647。//负21亿 到 正21亿, 大概是 2 * 10^9, 10的8次方是1亿， 10的9次方是10亿。
         System.out.println("Hello world");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
