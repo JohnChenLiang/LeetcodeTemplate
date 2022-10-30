@@ -15,10 +15,12 @@ public class LeetcodeTemplateApplication {
         //当double类型小数点后超过3位就会按科学计数法显示：1.0E-4 ，即<=0.0001
         //小数点前 超过7位数 也会按科学计数法显示。10^7，7个0是8位数 即一千万 就科学技术法了。。9999999还能正常显示，
 
-        //int的范围是-2147483648~2147483647。//负21亿 到 正21亿, 大概是 2 * 10^9, 10的8次方是1亿， 10的9次方是10亿。
+        //int的范围是-2147483648~2147483647。//[-2^31 ~ 2^31-1] 即负21亿 到 正21亿, 大概是 2 * 10^9, 10的8次方是1亿， 10的9次方是10亿。
         System.out.println("Hello world");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
+
+    //BigInteger有现成的求最大公约数的函数gcd(BigInteger val)。    返回一个 BigInteger，其值为 abs(this) 和 abs(val) 的最大公约数
 
     //Deque 当队列用，主要是 addLast---加到队尾，pollFirst---获取队头并删除，peekFirst---获取队头但不删除，判断时用。
     //Deque 当栈用，主要是 addFirst---入栈，removeFirst---出栈，peekFirst---获取位于栈最上面的但不删除，判断时用。
