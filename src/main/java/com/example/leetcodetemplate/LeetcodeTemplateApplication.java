@@ -28,6 +28,9 @@ public class LeetcodeTemplateApplication {
     //Deque 当队列用，主要是 addLast---加到队尾，pollFirst---获取队头并删除，peekFirst---获取队头但不删除，判断时用。
     //Deque 当栈用，主要是 addFirst---入栈，removeFirst---出栈，peekFirst---获取位于栈最上面的但不删除，判断时用。
 
+    //Deque 当栈用 入栈出栈能在队尾操作 而不在队头吗？
+    //Deque 当栈用, 能把入栈当作加到队尾 出栈当作移除队尾吗 这样Deque可以用基于数组的，查询也快， 不用基于链表的，入栈在队头的那是一定要基于链表的。
+
     // (0)               0
     // (1)               1
     // (2)              10
