@@ -3,6 +3,7 @@ package com.example.leetcodetemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -20,7 +21,9 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
-    //BigInteger有现成的求最大公约数的函数gcd(BigInteger val)。    返回一个 BigInteger，其值为 abs(this) 和 abs(val) 的最大公约数
+    //BigInteger有现成的求最大公因数的函数gcd，用法：a.gcd(b)。a、b都要是BigInteger
+    // 用法：BigInteger a = new BigInteger("12");BigInteger b= new BigInteger("16");System.out.println(a.gcd(b)); //结果是4，最最大公因数是4
+
 
     //Deque 当队列用，主要是 addLast---加到队尾，pollFirst---获取队头并删除，peekFirst---获取队头但不删除，判断时用。
     //Deque 当栈用，主要是 addFirst---入栈，removeFirst---出栈，peekFirst---获取位于栈最上面的但不删除，判断时用。
