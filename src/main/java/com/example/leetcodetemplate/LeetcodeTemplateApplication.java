@@ -17,7 +17,7 @@ public class LeetcodeTemplateApplication {
         //小数点前 超过7位数 也会按科学计数法显示。10^7，7个0是8位数 即一千万 就科学技术法了。。9999999还能正常显示，
 
         //int的范围是-2147483648~2147483647。//[-2^31 ~ 2^31-1] 即负21亿 到 正21亿, 大概是 2 * 10^9, 10的8次方是1亿， 10的9次方是10亿。
-        System.out.println("Hello world");
+        System.out.println("Hello world!");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
