@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class LeetcodeTemplateApplication {
 
     public static void main(String[] args) {
-        //ASCII码  'A' 是65，’a‘ 是97，相差32
+        //ASCII码 '0'是48  'A' 是65，’a‘ 是97，相差32
 
 
         //当double类型小数点后超过3位就会按科学计数法显示：1.0E-4 ，即<=0.0001
@@ -20,6 +20,8 @@ public class LeetcodeTemplateApplication {
         System.out.println("Hello world!");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
+
+    //要连着写几行if判断，要确保第二个和之后的if的判断条件 不能被之前的if所改变。如果会被改变，那要用 else if 来写。
 
     //BigInteger有现成的求最大公因数的函数gcd，用法：a.gcd(b)。a、b都要是BigInteger
     // 用法：BigInteger a = new BigInteger("12");BigInteger b= new BigInteger("16");System.out.println(a.gcd(b)); //结果是4，最最大公因数是4
