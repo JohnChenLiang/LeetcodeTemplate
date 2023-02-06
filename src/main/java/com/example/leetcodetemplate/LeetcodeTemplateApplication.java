@@ -21,6 +21,9 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //Java里 replace是替换全部，参数是字符串；replaceAll是替换全部，参数是正则；
+    //JavaScript里 replace的参数是字符串 是替换找到的第一个；replace的参数是正则 是替换全部；replaceAll方法leetcode里支持，参数是字符串 是替换全部，但不知道其他地方js支不支持replaceAll
+
     //要连着写几行if判断，要确保第二个和之后的if的判断条件 不能被之前的if所改变。如果会被改变，那要用 else if 来写。
 
     //BigInteger有现成的求最大公因数的函数gcd，用法：a.gcd(b)。a、b都要是BigInteger
