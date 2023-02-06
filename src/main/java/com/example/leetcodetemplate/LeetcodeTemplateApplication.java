@@ -21,6 +21,8 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //判断是否包含 Java用 字符串和集合的contains；JavaScrip用includes 都是返回true和false的
+
     //Java里 replace是替换全部，参数是字符串；replaceAll是替换全部，参数是正则；
     //JavaScript里 replace的参数是字符串 是替换找到的第一个；replace的参数是正则 是替换全部；replaceAll方法leetcode里支持，参数是字符串 是替换全部，但不知道其他地方js支不支持replaceAll
 
