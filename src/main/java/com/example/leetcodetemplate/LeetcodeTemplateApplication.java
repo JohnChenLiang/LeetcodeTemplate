@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.TreeMap;
 
 @SpringBootApplication
 public class LeetcodeTemplateApplication {
@@ -20,6 +23,9 @@ public class LeetcodeTemplateApplication {
         System.out.println("Hello world!");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
+
+    //TreeMap默认是对key从小到大排序，下面这写法可以建一个 key从大到小排序的TreeMap
+    //TreeMap<Integer, List<Integer>> treeMap = new TreeMap<>(Comparator.reverseOrder()); //从大到小的
 
     //二维数组 按第二列降序，在第二列相同的情况按第一列升序。记忆方法是 小的在前面 中间用减号链接。
     //Arrays.sort(time, (o1, o2) -> o1[1] == o2[1] ? o1[0] - o2[0] : o2[1] - o1[1]);
@@ -56,8 +62,7 @@ public class LeetcodeTemplateApplication {
     //二进制字符串 转 十进制。 Integer.parseInt("100", 2);//二进制100 对应的十进制是4。parseInt方法是 将字符串参数解析为第二个参数指定的基数中的有符号整数
     //十进制int 转 二进制字符串。Integer.toBinaryString(4);//十进制是4 对应的 二进制是100。
 
-    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
-    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
+
 
     //二分题 必写代码：
     //if () l = m + 1; //取右半边
