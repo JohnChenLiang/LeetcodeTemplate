@@ -32,6 +32,9 @@ public class LeetcodeTemplateApplication {
 
     //判断是否包含 Java用 字符串和集合的contains；JavaScrip用includes 都是返回true和false的
 
+    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
+    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
+
     //Java里 replace是替换全部，参数是字符串；replaceAll是替换全部，参数是正则；
     //JavaScript里 replace的参数是字符串 是替换找到的第一个；replace的参数是正则 是替换全部；replaceAll方法leetcode里支持，参数是字符串 是替换全部，但不知道其他地方js支不支持replaceAll
 
