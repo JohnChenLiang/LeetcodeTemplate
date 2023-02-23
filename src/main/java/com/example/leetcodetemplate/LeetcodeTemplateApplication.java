@@ -13,6 +13,12 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    // 0         0       5     101     10    1010
+    // 1         1       6     110     11    1011
+    // 2        10       7     111     12    1100
+    // 3        11       8    1000
+    // 4       100       9    1001
+
     //二进制字符串 转 十进制。 Integer.parseInt("100", 2);//二进制100 对应的十进制是4。parseInt方法是 将字符串参数解析为第二个参数指定的基数中的有符号整数
 
     //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
