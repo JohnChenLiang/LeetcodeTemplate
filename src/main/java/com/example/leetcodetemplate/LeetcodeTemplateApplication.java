@@ -3,29 +3,70 @@ package com.example.leetcodetemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 @SpringBootApplication
 public class LeetcodeTemplateApplication {
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        //ASCII码 '0'是48  'A' 是65，’a‘ 是97，相差32
+
+
+        //当double类型小数点后超过3位就会按科学计数法显示：1.0E-4 ，即<=0.0001
+        //小数点前 超过7位数 也会按科学计数法显示。10^7，7个0是8位数 即一千万 就科学技术法了。。9999999还能正常显示，
+
+        //int的范围是-2147483648~2147483647。//[-2^31 ~ 2^31-1] 即负21亿 到 正21亿, 大概是 2 * 10^9, 10的8次方是1亿， 10的9次方是10亿。
+        System.out.println("Hello world!");
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
-    // 0         0       5     101     10    1010
-    // 1         1       6     110     11    1011
-    // 2        10       7     111     12    1100
-    // 3        11       8    1000
-    // 4       100       9    1001
+    //二维数组 按第二列降序，在第二列相同的情况按第一列升序。记忆方法是 小的在前面 中间用减号链接。
+    //Arrays.sort(time, (o1, o2) -> o1[1] == o2[1] ? o1[0] - o2[0] : o2[1] - o1[1]);
+
+    //判断是否包含 Java用 字符串和集合的contains；JavaScrip用includes 都是返回true和false的
+
+    //Java里 replace是替换全部，参数是字符串；replaceAll是替换全部，参数是正则；
+    //JavaScript里 replace的参数是字符串 是替换找到的第一个；replace的参数是正则 是替换全部；replaceAll方法leetcode里支持，参数是字符串 是替换全部，但不知道其他地方js支不支持replaceAll
+
+    //要连着写几行if判断，要确保第二个和之后的if的判断条件 不能被之前的if所改变。如果会被改变，那要用 else if 来写。
+
+    //BigInteger有现成的求最大公因数的函数gcd，用法：a.gcd(b)。a、b都要是BigInteger
+    // 用法：BigInteger a = new BigInteger("12");BigInteger b= new BigInteger("16");System.out.println(a.gcd(b)); //结果是4，最最大公因数是4
+
+
+    //Deque 当队列用，主要是 addLast---加到队尾，pollFirst---获取队头并删除，peekFirst---获取队头但不删除，判断时用。
+    //Deque 当栈用，有两种做法
+    // 一种是 addLast---入栈，removeLast---出栈，peekLast---获取位于栈最上面的但不删除，判断时用。最好用这种，这样Deque可以用基于数组的，查询也快，不用基于链表的。
+    // 另一种是 addFirst---入栈，removeFirst---出栈，peekFirst---获取位于栈最上面的但不删除，判断时用。这种Deque要基于链表的。两种方法速度都差不多，还是默认用上面这种基于数组的。
+
+    // (0)               0
+    // (1)               1
+    // (2)              10
+    // (3)              11
+    // (4)             100
+    // (5)             101
+    // (6)             110
+    // (7)             111
+    // (8)            1000
+    // (9)            1001
+    // (10)           1010
+
 
     //二进制字符串 转 十进制。 Integer.parseInt("100", 2);//二进制100 对应的十进制是4。parseInt方法是 将字符串参数解析为第二个参数指定的基数中的有符号整数
+    //十进制int 转 二进制字符串。Integer.toBinaryString(4);//十进制是4 对应的 二进制是100。
 
+    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
     //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
 
+    //二分题 必写代码：
+    //if () l = m + 1; //取右半边
+    //else r = m; //取左半边，包含中值。
+
     //二分题模板.1.求要二分的范围。
-    //          2.求范围的中值。
-    //          3.把中值代入 根据结果 看取范围的左半部分 还是右半部分。小于等于 或 大于等于，即带等于号的 确定再次二分范围的时候 要包含中值。
+    //          2.求范围的中值m = (l + r) >>> 1。
+    //          3.把中值代入 根据结果 看取范围的左半部分 还是右半部分。
+    //              常规的写法是if() l=m+1;else r=m;然后看符不符合题意。不符合要换写法，if() l=m;else r=m-1;然后对应中值求法也得换m = (l + r + 1) >>> 1，不然跳不出循环。
     //          4.继续不断二分 直到 范围只包含一个数，即l = r的情况，说明 找到唯一的数，退出循环。
     //            因为结果肯定在范围里，又找到唯一的数，那所求就是该数，返回该数。
     //875. 爱吃香蕉的珂珂
@@ -33,7 +74,7 @@ public class LeetcodeTemplateApplication {
     //思路：piles数组的最大值为maxK， 结果就在[1, maxK]范围中，用二分来找符合题意的最小的。
     //      求出中值，用中值求出总共花的时间。
     //      所花时间比h长，说明效率低了，说明要从中值右边这块[k + 1, r]找；
-    //      所花时间小于等于h，说明就要从中值左边这块[l, k]找。 小于等于 或 大于等于，即带等于号的 确定范围的时候 要带上中值。
+    //      所花时间小于等于h，说明就要从中值左边这块[l, k]找。
     //      最后 l和r 重合，说明找到，退出循环，返回l或r都行 毕竟一样。
     //      要把区间收到 l=r，因为结果肯定在[1, maxK]范围中，把区间缩到l=r，即只有一个数，那这个数肯定是所求。
     //      不能直接二分的公式 找到sumH为h时就返回。因为sumH为 h时，k不一定是最小的，可能左边还有 符合的 更小的k，所以不能直接return。
