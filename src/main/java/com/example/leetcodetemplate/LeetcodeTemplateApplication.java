@@ -64,7 +64,7 @@ public class LeetcodeTemplateApplication {
 
     //二进制字符串 转 十进制。 Integer.parseInt("100", 2);//二进制100 对应的十进制是4。parseInt方法是 将字符串参数解析为第二个参数指定的基数中的有符号整数
     //十进制int 转 二进制字符串。Integer.toBinaryString(4);//十进制是4 对应的 二进制是100。
-
+    //按位异或。式子 val ^ first 等于 second，知道其中两个能求出另外一个，val = first ^ second
 
 
     //二分题 必写代码：
