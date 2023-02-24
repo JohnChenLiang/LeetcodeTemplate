@@ -24,6 +24,10 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //TreeMap自带有函数 从左或从右找 最接近给定值的key，能降低时间复杂度。
+    //int smaller = treeMap.floorKey(n); //返回小于或等于给定键的最大键，如果没有这样的键，则null
+    //int bigger =  reeMap.ceilingKey(n); //返回大于或等于给定键的最小键，如果没有这样的键，则null
+
     //TreeMap默认是对key从小到大排序，下面这写法可以建一个 key从大到小排序的TreeMap
     //TreeMap<Integer, List<Integer>> treeMap = new TreeMap<>(Comparator.reverseOrder()); //从大到小的
 
