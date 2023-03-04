@@ -24,6 +24,8 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //数据范围10^4 可以考虑暴力，中等题周赛时最后想不出来再用暴力，10^9范围 暴力肯定超时
+
     //周赛思路觉得正确且没法优化 可以试试用js
 
     //TreeMap自带有函数 从左或从右找 最接近给定值的key，能降低时间复杂度。
