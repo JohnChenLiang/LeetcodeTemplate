@@ -40,6 +40,8 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //遇到要处理 前导零 的情况，可以考虑把字符串直接转为数字，这样字符串只能是数字 不能有其他的，不然没法转成数字，而且这样就可能要考虑新的问题 不能过超过所选数字类型的范围。
+
     //数据范围10^4 可以考虑暴力，中等题周赛时最后想不出来再用暴力，10^9范围 暴力肯定超时
 
     //周赛思路觉得正确且没法优化 可以试试用js
