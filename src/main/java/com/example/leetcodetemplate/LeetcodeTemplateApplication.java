@@ -50,7 +50,7 @@ public class LeetcodeTemplateApplication {
 
     //TreeMap自带有函数 从左或从右找 最接近给定值的key，能降低时间复杂度。
     //int smaller = treeMap.floorKey(n); //返回小于或等于给定键的最大键，如果没有这样的键，则null
-    //int bigger =  reeMap.ceilingKey(n); //返回大于或等于给定键的最小键，如果没有这样的键，则null
+    //int bigger =  treeMap.ceilingKey(n); //返回大于或等于给定键的最小键，如果没有这样的键，则null
 
     //TreeMap默认是对key从小到大排序，下面这写法可以建一个 key从大到小排序的TreeMap
     //TreeMap<Integer, List<Integer>> treeMap = new TreeMap<>(Comparator.reverseOrder()); //从大到小的
@@ -58,7 +58,7 @@ public class LeetcodeTemplateApplication {
     //二维数组 按第二列降序，在第二列相同的情况按第一列升序。记忆方法是 小的在前面 中间用减号链接。
     //Arrays.sort(time, (o1, o2) -> o1[1] == o2[1] ? o1[0] - o2[0] : o2[1] - o1[1]);
 
-    //判断是否包含 Java用 字符串和集合的contains；JavaScrip用includes 都是返回true和false的
+    //判断是否包含 Java用 字符串和集合的 contains；JavaScrip用 includes 都是返回true和false的
 
     //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
     //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
