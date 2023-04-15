@@ -13,7 +13,7 @@ import java.util.TreeMap;
 public class LeetcodeTemplateApplication {
 
     public static void main(String[] args) {
-        //ASCII码 '0'是48  'A' 是65，’a‘ 是97，相差32
+        //ASCII码 空格是32 '0'是48  'A' 是65，'a' 是97，相差32
 
 
         //当double类型小数点后超过3位就会按科学计数法显示：1.0E-4 ，即<=0.0001
