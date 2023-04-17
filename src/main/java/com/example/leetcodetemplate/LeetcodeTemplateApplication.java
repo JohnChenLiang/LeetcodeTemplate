@@ -88,6 +88,9 @@ public class LeetcodeTemplateApplication {
     // 一种是 addLast---入栈，removeLast---出栈，peekLast---获取位于栈最上面的但不删除，判断时用。最好用这种，这样Deque可以用基于数组的，查询也快，不用基于链表的。
     // 另一种是 addFirst---入栈，removeFirst---出栈，peekFirst---获取位于栈最上面的但不删除，判断时用。这种Deque要基于链表的。两种方法速度都差不多，还是默认用上面这种基于数组的。
 
+    //LinkedList 是基于链表的list， 仅仅在头插入或者删除元素的时候 或在 前半部分增删元素时 比 ArrayList 性能要好，因为基于数组的ArrayList 插入删除时 都要把后面全部 往后或往前移一格。
+    //LinkedList其他时候性能跟ArrayList一样 甚至还不如。所以绝大部分都用ArrayList，只有在 有个会对头操作的队列时 或 全是头插入或者删除元素的时候 或 全是在前半部分增删元素时 才会考虑用LinkedList。
+
     // 0         0       5     101     10    1010
     // 1         1       6     110     11    1011
     // 2        10       7     111     12    1100
