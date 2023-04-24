@@ -110,6 +110,11 @@ public class LeetcodeTemplateApplication {
 
     //等差数列求和公式 S = n * (A1 + An) / 2
 
+    //Collections.binarySearch 方法会返回该元素在列表中的索引，如果找不到则返回 - (插入点 + 1)。求插入点index的代码是 if (index < 0) index = -index - 1;
+    //List<Integer> list = Arrays.asList(1, 3, 4, 6, 8);
+    //int index = Collections.binarySearch(list, 4); //结果index 的值为 2
+    //int index = Collections.binarySearch(list, 5); //结果index 的值为 -4。可以根据 取负减一 得出 插入点为3
+
     //「二分」的本质是两段性，并非单调性。只要一段满足某个性质，另外一段不满足某个性质，就可以用「二分」。
     // 经常遇到的题是 所求的值是在一个范围内，这时可以用二分。因为范围内的元素都是单调递增的，单调肯定满足两段性。
 
