@@ -223,4 +223,32 @@ public class LeetcodeTemplateApplication {
         //返回最大容量时的dp值。
         return dp[C];
     }
+
+    //取窗口内的第x小的，可以用两个TreeMap，一个放前x个 另一个放剩下的。结果就是 前x个的那个的lastKey。下面是 维护两个TreeMap的 两个函数，加一个数减一个数的。
+
+    //一个升序的集合或数组，分成不一定等长但都升序的两部分 放到两个TreeMap里，前一部分放到 minMap里，剩下的放到maxMap里，Map里的value记元素个数。
+    //然后往这个升序的集合或数组 里加一个数 减一个数，使两个TreeMap的含有的元素个数不变。
+    public void addOneRemoveOneAndKeepTreeMap(TreeMap<Integer, Integer> minMap, TreeMap<Integer, Integer> maxMap, int add, int remove) {
+        //加一个。先加到小的里，然后把小的最大的放到 大的里，然后小的里对应减一
+        minMap.put(add, minMap.getOrDefault(add, 0) + 1);
+        int minLastKey = minMap.lastKey();
+        maxMap.put(minLastKey, maxMap.getOrDefault(minLastKey, 0) + 1);
+        minusOneForMapValue(minMap, minLastKey);
+
+        //减一个。看是不是在大的里，在大的里直接减一；不在大的里，那就是在小的里，小的里先减一，然后把大的里的最小的即firstKey 放到小的里，然后大的的firstKey的value减一
+        if (maxMap.containsKey(remove)) minusOneForMapValue(maxMap, remove);
+        else {
+            minusOneForMapValue(minMap, remove);
+            int maxFirstKey = maxMap.firstKey();
+            minMap.put(maxFirstKey, minMap.getOrDefault(maxFirstKey, 0) + 1);
+            minusOneForMapValue(maxMap, maxFirstKey);
+        }
+    }
+
+    //map的某个key的value减一。当value为0时 删除。
+    public void minusOneForMapValue(TreeMap<Integer, Integer> treeMap, int key) {
+        int theValue = treeMap.get(key);
+        if (theValue == 1) treeMap.remove(key);
+        if (theValue >= 2) treeMap.put(key, theValue - 1);
+    }
 }
