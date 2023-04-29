@@ -118,6 +118,8 @@ public class LeetcodeTemplateApplication {
     //int index = Collections.binarySearch(list, 4); //结果index 的值为 2
     //int index = Collections.binarySearch(list, 5); //结果index 的值为 -4。可以根据 取负减一 得出 插入点为3
 
+    //看是不是素数，小于2的都不是素数，2、3是素数 遍历 [2,sqr(num)),这样时间复杂度是O(sqr(n))。
+
     //「二分」的本质是两段性，并非单调性。只要一段满足某个性质，另外一段不满足某个性质，就可以用「二分」。
     // 经常遇到的题是 所求的值是在一个范围内，这时可以用二分。因为范围内的元素都是单调递增的，单调肯定满足两段性。
 
