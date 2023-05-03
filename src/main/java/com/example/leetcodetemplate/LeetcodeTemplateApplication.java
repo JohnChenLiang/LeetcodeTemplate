@@ -118,6 +118,10 @@ public class LeetcodeTemplateApplication {
     //int index = Collections.binarySearch(list, 4); //结果index 的值为 2
     //int index = Collections.binarySearch(list, 5); //结果index 的值为 -4。可以根据 取负减一 得出 插入点为3
 
+    //红黑树是一种二叉搜索树，节点的值需要满足以下规则：
+    //-  左子树上所有节点的值小于当前节点的值
+    //-  右子树上所有节点的值大于当前节点的值
+
     //看是不是素数，小于2的都不是素数，2、3是素数 遍历 [2,sqr(num)),这样时间复杂度是O(sqr(n))。
 
     //不是所有的递归都可以直接转换成动态规划。比如二叉树的前序遍历就得用递归写，没法用动态规划。递归能够被转换成动态规划的前提是满足「无后效性」和「最优子结构」的特点。
