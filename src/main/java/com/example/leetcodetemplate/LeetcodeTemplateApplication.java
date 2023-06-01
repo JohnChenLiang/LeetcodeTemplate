@@ -66,7 +66,7 @@ public class LeetcodeTemplateApplication {
     //TreeMap默认是对key从小到大排序，下面这写法可以建一个 key从大到小排序的TreeMap
     //TreeMap<Integer, List<Integer>> treeMap = new TreeMap<>(Comparator.reverseOrder()); //从大到小的
 
-    //二维数组 按第二列降序，在第二列相同的情况按第一列升序。记忆方法是 小的在前面 中间用减号链接。
+    //二维数组 按第二列降序，在第二列相同的情况按第一列升序。记忆方法是 逗号，括号 然后放两数组即 o1 o2，再箭头，再三元，三元里放数组的值，小的在前面 中间用减号链接。
     //Arrays.sort(time, (o1, o2) -> o1[1] == o2[1] ? o1[0] - o2[0] : o2[1] - o1[1]);
 
     //判断是否包含 Java用 字符串和集合的 contains；JavaScrip用 includes 都是返回true和false的
