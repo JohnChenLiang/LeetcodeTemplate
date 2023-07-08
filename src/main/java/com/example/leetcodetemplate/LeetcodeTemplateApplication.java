@@ -40,6 +40,8 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
+    //Integer 超128的判断问题。用 orderDTO.getSpareMoney() != null && orderDTO.getSpareMoney().intValue() 或 避免麻烦 直接用for (int i : treeSet)
+
     //求位数，可以转成字符数组 通过遍历减'0'来求。如果数字不是太长 也可以用除法取余加while循环来求,但这种方法要注意结果的顺序。
 
     //遇到要处理 前导零 的情况，可以考虑把字符串直接转为数字，这样字符串只能是数字 不能有其他的，不然没法转成数字，而且这样就可能要考虑新的问题 不能过超过所选数字类型的范围。
