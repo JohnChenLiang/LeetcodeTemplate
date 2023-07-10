@@ -140,6 +140,10 @@ public class LeetcodeTemplateApplication {
 
     //递归：1.确定递归函数的参数和返回值。2.确定终止条件。3.确定单层递归的逻辑。
 
+    //取list里的第一条，还是 if (list != null && list.size() >= 1) 这样判断才严谨。
+    //List<OrderTableVO> list = this.queryOrderVoByOrderId(orderId);
+    //if (list != null && list.size() >= 1) list.get(0);
+
     //「二分」的本质是两段性，并非单调性。只要一段满足某个性质，另外一段不满足某个性质，就可以用「二分」。
     // 经常遇到的题是 所求的值是在一个范围内，这时可以用二分。因为范围内的元素都是单调递增的，单调肯定满足两段性。
 
