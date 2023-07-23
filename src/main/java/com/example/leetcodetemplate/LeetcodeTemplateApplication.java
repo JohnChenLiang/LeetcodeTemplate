@@ -141,6 +141,9 @@ public class LeetcodeTemplateApplication {
     //前序。中在前，就是中左右遍历。
     //递归：1.确定递归函数的参数和返回值。2.确定终止条件。3.确定单层递归的逻辑。
 
+    //字符串不是null 且不是空串 且是正整数。没lang3包 字符串判空得这样写。正整数正则：[1-9] 匹配第一个数字为1-9 中的任意一个；\\d* 匹配 0 个或多个数字，其中 \\d 表示匹配数字。
+    //if (str != null && !str.isEmpty() && str.matches("[1-9]\\d*")) {
+
     //取list里的第一条，还是 if (list != null && list.size() >= 1) 这样判断才严谨。
     //List<OrderTableVO> list = this.queryOrderVoByOrderId(orderId);
     //if (list != null && list.size() >= 1) list.get(0);
