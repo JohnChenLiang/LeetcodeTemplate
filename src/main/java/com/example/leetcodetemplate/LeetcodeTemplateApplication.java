@@ -127,6 +127,9 @@ public class LeetcodeTemplateApplication {
     //int index = Collections.binarySearch(list, 4); //结果index 的值为 2
     //int index = Collections.binarySearch(list, 5); //结果index 的值为 -4。可以根据 取负减一 得出 插入点为3
 
+    //取窗口内的第x小的，可以用两个TreeMap，一个放前x个 另一个放剩下的。结果就是 前x个的那个的lastKey。
+    //    也可以放list里，把初始 排序后 放进list，然后用Collections.binarySearch找到插入点，加一个减一个时把list维护成升序的，然后直接get要的顺序结果。
+
     //红黑树是一种二叉搜索树，节点的值需要满足以下规则：
     //-  左子树上所有节点的值小于当前节点的值
     //-  右子树上所有节点的值大于当前节点的值
