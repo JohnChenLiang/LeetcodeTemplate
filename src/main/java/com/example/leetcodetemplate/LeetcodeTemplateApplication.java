@@ -61,6 +61,8 @@ public class LeetcodeTemplateApplication {
 
     //周赛思路觉得正确且没法优化 可以试试用js
 
+    //正向思考难，就从尾巴开始思考
+
     //TreeMap自带有函数 从左或从右找 最接近给定值的key，能降低时间复杂度。
     //int smaller = treeMap.floorKey(n); //返回小于或等于给定键的最大键，如果没有这样的键，则null
     //int bigger =  treeMap.ceilingKey(n); //返回大于或等于给定键的最小键，如果没有这样的键，则null
