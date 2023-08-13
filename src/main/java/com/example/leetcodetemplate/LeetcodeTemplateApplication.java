@@ -12,6 +12,11 @@ import java.util.TreeMap;
 @SpringBootApplication
 public class LeetcodeTemplateApplication {
 
+    //周赛注意事项
+    //1.正向思考难，就从尾巴开始思考
+    //2.先用HashMap做出来再说，再考虑用数组优化
+    //3.周赛思路觉得正确且没法优化 可以试试用js
+
     public static void main(String[] args) {
         //ASCII码 空格是32 '0'是48  'A' 是65，'a' 是97，相差32
 
