@@ -68,9 +68,9 @@ public class LeetcodeTemplateApplication {
 
     //正向思考难，就从尾巴开始思考
 
-    //TreeMap自带有函数 从左或从右找 最接近给定值的key，能降低时间复杂度。
-    //int smaller = treeMap.floorKey(n); //返回小于或等于给定键的最大键，如果没有这样的键，则null
-    //int bigger =  treeMap.ceilingKey(n); //返回大于或等于给定键的最小键，如果没有这样的键，则null
+    //TreeMap自带4个二分找key函数，floorKey 从地板靠近、ceilingKey 从天花板靠近、lowerKey 严格小于、higherKey 严格大于。前两个取得到等号，后两个取不到等号
+    //Integer floorKey = treeMap.floorKey(n); //floorKey返回小于或等于给定键的最大键，能取等号，如果没有这样的键，则null。lowerKey 是严格小于的，取不到等号。
+    //Integer ceilingKey =  treeMap.ceilingKey(n); //ceilingKey返回大于或等于给定键的最小键，能取等号，如果没有这样的键，则null。higherKey 是严格大于的，取不到等号。
 
     //TreeMap默认是对key从小到大排序，下面这写法可以建一个 key从大到小排序的TreeMap
     //TreeMap<Integer, List<Integer>> treeMap = new TreeMap<>(Comparator.reverseOrder()); //从大到小的
