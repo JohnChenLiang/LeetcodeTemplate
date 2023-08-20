@@ -156,10 +156,9 @@ public class LeetcodeTemplateApplication {
     //字符串不是null 且不是空串 且是正整数。没lang3包 字符串判空得这样写。正整数正则：[1-9] 匹配第一个数字为1-9 中的任意一个；\\d* 匹配 0 个或多个数字，其中 \\d 表示匹配数字。
     //if (str != null && !str.isEmpty() && str.matches("[1-9]\\d*")) {
 
-    //取list里的第一条，还是 if (list != null && list.size() >= 1) 这样判断才严谨。
-    //List<OrderTableVO> list = this.queryOrderVoByOrderId(orderId);
-    //if (list != null && list.size() >= 1) list.get(0);
-    //if (!CollectionUtils.isEmpty) 这个list判空的写法跟上面一行是等价的，推荐写上面这个，一眼能看懂
+    //取list里的第一条，还是 if (list != null && list.size() >= 1) list.get(0);这样判断才严谨。
+    //因为list有三种情况，为null；不为null但没值 即List 对象已经被实例化，但是没有包含任何元素；有正常值的情况。上面这样写 list有正常值的情况才会 true。
+    //if (!CollectionUtils.isEmpty) 这个list判空的写法跟上面这个判断是等价的，推荐写上面这个，一眼能看懂
 
     //「二分」的本质是两段性，并非单调性。只要一段满足某个性质，另外一段不满足某个性质，就可以用「二分」。
     // 经常遇到的题是 所求的值是在一个范围内，这时可以用二分。因为范围内的元素都是单调递增的，单调肯定满足两段性。
