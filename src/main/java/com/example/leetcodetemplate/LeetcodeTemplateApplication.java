@@ -46,12 +46,18 @@ public class LeetcodeTemplateApplication {
     }
 
     //Integer 超128的判断问题。用 orderDTO.getSpareMoney() != null && orderDTO.getSpareMoney().intValue() 或 避免麻烦 直接用for (int i : treeSet)
+    //    //遍历第一个map的key 看两个map的 Integer类型的value 是否相等，要用equals判断。若不等 返回false，遍历完都没返回false 就返回true。
+    //    //Integer 当值不在-128和127之间时，会创建一个新Integer对象，==判断的是内存地址是否一致。所以这里要用! 和 equals判断 不用!=判断。
+    //    boolean check (HashMap<String, Integer> checkMap, HashMap<String, Integer> wordsMap){
+    //        for (String i : checkMap.keySet()) {
+    //            if (!checkMap.get(i).equals(wordsMap.get(i))) return false;
+    //        }
+    //        return true;
+    //    }
 
     //求位数，可以转成字符数组 通过遍历减'0'来求。如果数字不是太长 也可以用除法取余加while循环来求,但这种方法要注意结果的顺序。
 
     //遇到要处理 前导零 的情况，可以考虑把字符串直接转为数字，这样字符串只能是数字 不能有其他的，不然没法转成数字，而且这样就可能要考虑新的问题 不能过超过所选数字类型的范围。
-
-    //周赛 先用HashMap做出来再说，再考虑用数组优化。
 
     //数据范围10^4 可以考虑暴力，中等题周赛时最后想不出来再用暴力，10^9范围 暴力肯定超时。
     //leetcode运行时间超过3000ms好像就判定为超时。
@@ -63,8 +69,6 @@ public class LeetcodeTemplateApplication {
     //n = 50   时间复杂度最多0(n^4)
     //n = 24   时间复杂度最多(2^n)
     //n = 9    时间复杂度最多O(n!)
-
-    //周赛思路觉得正确且没法优化 可以试试用js
 
     //单调栈里放 数组和放下标 性能好像差不多，一般放下标。我是用list当单调栈的。两种的区别如下：
     // 1.放数组。[0]是元素值，[1]是下标，代码可读性更好，但代码会长一点多一点。
