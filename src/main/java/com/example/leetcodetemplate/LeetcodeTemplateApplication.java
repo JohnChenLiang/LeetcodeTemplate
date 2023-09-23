@@ -299,4 +299,23 @@ public class LeetcodeTemplateApplication {
         if (theValue == 1) treeMap.remove(key);
         if (theValue >= 2) treeMap.put(key, theValue - 1);
     }
+
+    //JavaScript 只用fori循环，因为其他的js的for跟java不一样，会出问题。
+    //JavaScript 遍历map要这样写
+//    let map = new Map();
+//    map.set('key1', 'value1');
+//    map.set('key2', 'value2');
+//    map.set('key3', 'value3');
+//    for (let [key, value] of map.entries()) {
+//        console.log(key + ': ' + value);
+//    }
+
+//    let set = new Set();
+//    set.add('value1');
+//    set.add('value2');
+//    set.add('value3');
+//
+//    for (let value of set) {
+//        console.log(value);
+//    }
 }
