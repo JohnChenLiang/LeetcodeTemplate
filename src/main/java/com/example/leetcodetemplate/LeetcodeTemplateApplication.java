@@ -16,6 +16,8 @@ public class LeetcodeTemplateApplication {
     //1.正向思考难，就从尾巴开始思考
     //2.先用HashMap做出来再说，再考虑用数组优化
     //3.周赛思路觉得正确且没法优化 可以试试用js
+    //4.企业场且取很多人的情况下，为了好名次，可以先用小号做，不写思路，然后把代码复制过来提交，要改下变量 防止被抓到作弊。
+
 
     public static void main(String[] args) {
         //ASCII码 空格是32 '0'是48  'A' 是65，'a' 是97，相差32
