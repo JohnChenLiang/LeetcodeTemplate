@@ -86,13 +86,10 @@ public class LeetcodeTemplateApplication {
     //二维数组 按第二列降序，在第二列相同的情况按第一列升序。记忆方法是 逗号，括号 然后放两数组即 o1 o2，再箭头，再三元，三元里放数组的值，小的在前面 中间用减号链接。
     //Arrays.sort(time, (o1, o2) -> o1[1] == o2[1] ? o1[0] - o2[0] : o2[1] - o1[1]);
 
-    //判断是否包含 Java用 字符串和集合的 contains；JavaScrip用 includes 都是返回true和false的
-
-    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
-    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
+    //判断是否包含 Java用 字符串和集合的 contains；JavaScript 用 includes 都是返回true和false的
 
     //Java里 replace是替换全部，参数是字符串；replaceAll是替换全部，参数是正则；
-    //JavaScript里 replace的参数是字符串 是替换找到的第一个；replace的参数是正则 是替换全部；replaceAll方法leetcode里支持，参数是字符串 是替换全部，但不知道其他地方js支不支持replaceAll
+    //JavaScript 里 replace的参数是字符串 是替换找到的第一个；replace的参数是正则 是替换全部；replaceAll方法leetcode里支持，参数是字符串 是替换全部，但不知道其他地方js支不支持replaceAll
 
     //要连着写几行if判断，要确保第二个和之后的if的判断条件 不能被之前的if所改变。如果会被改变，那要用 else if 来写。
 
@@ -136,6 +133,9 @@ public class LeetcodeTemplateApplication {
     // 正整数等差数列求和公式 结果肯定是整数，因为都是一个个正整数累加出来的。
     // 数学证明是 当为偶数个时 即n为偶数时 除以2不会出问题；当为奇数个时 首项加末项 是 两个奇数相加 或 两个偶数相加，这个除以2也不会出问题。
     // 所以  正整数等差数列 公差为正整数 那它的求和公式直接用就行，不会有 类似3/2为1的问题。
+
+    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
+    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
 
     //Collections.binarySearch 方法会返回该元素在列表中的索引，如果找不到则返回 - (插入点 + 1)。求插入点index的代码是 if (index < 0) index = -index - 1;
     //List<Integer> list = Arrays.asList(1, 3, 4, 6, 8);
