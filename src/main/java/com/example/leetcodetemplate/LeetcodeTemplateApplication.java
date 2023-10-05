@@ -4,10 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 @SpringBootApplication
 public class LeetcodeTemplateApplication {
@@ -309,6 +306,99 @@ public class LeetcodeTemplateApplication {
         if (theValue == 1) treeMap.remove(key);
         if (theValue >= 2) treeMap.put(key, theValue - 1);
     }
+
+
+
+    //优先队列的 迪杰斯克拉 + 基于数组的邻接表。O(m + n + (n + m)logm) 时间复杂度 先这样取最大的，因为我也没看懂怎么推的。
+    //743. 网络延迟时间。迪杰斯克拉 模板题。
+    public static int networkDelayTime22222222222222222222222222222222222222222222(int[][] times, int n, int k) {
+        int m = times.length;
+
+        int[] he = new int[n + 1];
+        int[] e = new int[m + 1];
+        int[] w = new int[m + 1];
+        int[] ne = new int[m + 1];
+        int idx = 1; //从1开始的，这样就不用改初始的0了,但数组长度就要m+1了
+
+        for (int[] arr : times) {
+            e[idx] = arr[1];
+            w[idx] = arr[2];
+            ne[idx] = he[arr[0]]; //用这行保留原来的 链表。这里 边 是从0编号开始的，所以 head数组初始要置-1，不能都是0。
+            he[arr[0]] = idx; //再更新头结点。
+            idx++;
+        }
+
+        int INF = Integer.MAX_VALUE / 2;
+        int[] dist = new int[n + 1]; //放k到i的最小距离，i是各点。初始都置为 int上限除以2，然后 dist[k] 为0，k到自身为0。
+        for (int i = 0; i <= n; i++) dist[i] = INF;
+        dist[k] = 0;
+        boolean[] vis = new boolean[n + 1]; //看这个顶点有没有更新过
+
+        //优先队列。放数组[点编号，到k的距离]，到k的距离最小的在最前。
+        PriorityQueue<int[]> q = new PriorityQueue<>((a,b) -> a[1] - b[1]);
+        q.add(new int[]{k, 0});
+        while (q.size() >= 1) {
+            int[] arr = q.poll();
+            if (vis[arr[0]]) continue; //更新过就跳过
+
+            vis[arr[0]] = true;
+
+            //通过k到i的最小 即dist[arr[0]]，更新i能够到的点end的 k到end的最小 即dist[end]。
+            // dist[end] = Math.min(dist[end], dist[arr[0]] + w[idx]); //这边更小的要入队，所以得写成if
+            for (idx = he[arr[0]]; idx != 0; idx = ne[idx]) {
+                int end = e[idx]; //i能到的点end
+                if (dist[end] > dist[arr[0]] + w[idx]) { //k到end 大于 (k到i + i到end)
+                    dist[end] = dist[arr[0]] + w[idx];
+                    q.add(new int[] {end, dist[end]});
+                }
+            }
+        }
+
+        int res = 1; //初始置为最小的1，因为题目不会给到k自身的，所以不会为0，然后最小的就是1了，然后下面循环找最大的。
+        for (int i = 1; i <= n; i++) {
+            res = Math.max(res, dist[i]);
+        }
+        return res == INF ? -1 : res; //遍历里 最大时间是INF的话要返回-1 说明不可达
+    }
+
+    //朴素迪杰斯克拉 + 邻接矩阵。 单源最短路径问题，即从给定起点到图中所有其他顶点的最短路径。O(n^2),n是顶点数。
+    //743. 网络延迟时间。迪杰斯克拉 模板题。
+    public int networkDelayTime1111111111111111111111111111111111111111111(int[][] times, int n, int k) {
+        int w[][] = new int[n + 1][101];
+        int INF = Integer.MAX_VALUE / 2;
+        //点到自身是0，点到另个点是 int上限除以2，防止直达和中间一站中转 作比较时 中间一站中转相加导致超int
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j < 101; j++) {
+                w[i][j] = (i == j ? 0 : INF);
+            }
+        }
+
+        for (int[]arr : times) w[arr[0]][arr[1]] = arr[2];
+
+        int[] dist = new int[n + 1]; //放k到i的最小距离，i是各点。初始都置为 int上限除以2，然后 dist[k] 为0，k到自身为0。
+        for (int i = 0; i <= n; i++) dist[i] = INF;
+        dist[k] = 0;
+        boolean vis[] = new boolean[n + 1]; //看这个顶点有没有更新过
+
+        for (int p = 1; p <= n; p++) { //内层for是关键的 且代码多，最好用i 不容易写错，外层只是为了执行n次 用p好了
+            int min = -1; //遍历找 没更新过的最近的顶点。置为负一是为了防止所有点都被遍历过吗？
+            for (int i = 1; i <= n; i++) {
+                if (vis[i] == false && (min == -1 || dist[min] > dist[i])) min = i;
+            }
+
+            vis[min] = true;
+            for (int i = 1; i <= n; i++) {
+                dist[i] = Math.min(dist[i], dist[min] + w[min][i]);
+            }
+        }
+
+        int res = 1; //初始置为最小的1，因为题目不会给到k自身的，所以不会为0，然后最小的就是1了，然后下面循环找最大的。
+        for (int i = 1; i <= n; i++) {
+            res = Math.max(res, dist[i]);
+        }
+        return res == INF ? -1 : res; //遍历里 最大时间是INF的话要返回-1 说明不可达
+    }
+
 
     //JavaScript 只用fori循环，因为其他的js的for跟java不一样，会出问题。
     //JavaScript 遍历map要这样写
