@@ -307,6 +307,8 @@ public class LeetcodeTemplateApplication {
         if (theValue >= 2) treeMap.put(key, theValue - 1);
     }
 
+    //dp 要递推方向（例如左上到右下的递推顺序），如果 上下左右都能走，然后能回头的，就不能dp了。
+    //这时 求最短路 可以用迪杰斯克拉。
 
 
     //优先队列的 迪杰斯克拉 + 基于数组的邻接表。O(m + n + (n + m)logm) 时间复杂度 先这样取最大的，因为我也没看懂怎么推的。
