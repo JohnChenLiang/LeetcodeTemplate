@@ -420,4 +420,20 @@ public class LeetcodeTemplateApplication {
 //    for (let value of set) {
 //        console.log(value);
 //    }
+
+
+    //二叉树的题，做了几个都可以 从递归遍历的代码上改出来，所以先记录一下 二叉树的递归遍历的模板。
+    //前序。中在前，就是中左右遍历。
+    //递归：1.确定递归函数的参数和返回值。2.确定终止条件。3.确定单层递归的逻辑。
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        preorder(root, list);
+        return list;
+    }
+    public void preorder(TreeNode root, List<Integer> list) {
+        if (root == null) return;
+        list.add(root.val);
+        preorder(root.left, list);
+        preorder(root.right, list);
+    }
 }
