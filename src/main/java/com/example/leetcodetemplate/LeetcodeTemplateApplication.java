@@ -436,4 +436,43 @@ public class LeetcodeTemplateApplication {
         preorder(root.left, list);
         preorder(root.right, list);
     }
+
+
+    //102. 二叉树的层序遍历。
+    //非递归的层序遍历。用了基于链表的队列。
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        Deque<TreeNode> deque = new LinkedList<>();
+        if (root != null) deque.addLast(root);
+        while (deque.size() >= 1) {
+            int n = deque.size();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < n; i++) { //把当前层的 都出队。
+                TreeNode poll = deque.pollFirst();
+                level.add(poll.val);
+                if (poll.left != null) deque.addLast(poll.left);
+                if (poll.right != null) deque.addLast(poll.right);
+            }
+            res.add(level);
+        }
+        return res;
+    }
+
+//    // //102. 二叉树的层序遍历。
+//    // //递归法。进入一次递归，层数就加一。从 二叉树递归遍历 改的
+//     public List<List<Integer>> levelOrder(TreeNode root) {
+//         List<List<Integer>> list = new ArrayList<>();
+//         int cnt = 0;
+//         vis(root, list, cnt);
+//         return list;
+//     }
+//     public void vis(TreeNode root, List<List<Integer>> list, int cnt) {
+//         if (root == null) return;
+//         if (list.size() == cnt) list.add(new ArrayList<>()); //list长度等于当前层数，那肯定不够，要再加一层。
+//         list.get(cnt).add(root.val);
+//
+//         //传到下一层，层数要加一，但不能直接 ++，要写成 +1，因为++会改变 当前的层数，导致 left完了到right时 层数会错。
+//         if (root.left != null) vis(root.left, list, cnt + 1);
+//         if (root.right != null) vis(root.right, list, cnt + 1);
+//     }
 }
