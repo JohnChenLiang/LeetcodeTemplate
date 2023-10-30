@@ -14,6 +14,7 @@ public class LeetcodeTemplateApplication {
     //2.先用HashMap做出来再说，再考虑用数组优化
     //3.周赛思路觉得正确且没法优化 可以试试用js
     //4.企业场且取很多人的情况下，为了好名次，可以先用小号做，不写思路，然后把代码复制过来提交，要改下变量 防止被抓到作弊。
+    //5.注意数据范围，第二题可能可以用冒泡。
 
 
     public static void main(String[] args) {
