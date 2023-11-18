@@ -17,6 +17,9 @@ public class LeetcodeTemplateApplication {
     //5.注意数据范围，第二题可能可以用冒泡。
 
     //7.下标和对应元素有数学关系式的话，最好移动到同一侧，这样 下标和对应元素的关联 就可以再用个数组表示了。
+    //8.数学关系式 最好把除法转成对应乘法，因为整数除法会有整数商精度的问题，乘法没有。
+
+
 
 
     public static void main(String[] args) {
