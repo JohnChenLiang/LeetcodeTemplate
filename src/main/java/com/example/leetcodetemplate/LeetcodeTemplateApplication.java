@@ -80,7 +80,9 @@ public class LeetcodeTemplateApplication {
     // 1.放数组。[0]是元素值，[1]是下标，代码可读性更好，但代码会长一点多一点。
     // 2.放下标。代码会短一点，但有的复杂的地方要写注释说明一下。
 
-    //TreeMap自带4个二分找key函数，floorKey 从地板靠近、ceilingKey 从天花板靠近、lowerKey 严格小于、higherKey 严格大于。前两个取得到等号，后两个取不到等号
+    //TreeMap自带4个二分找key函数，floorKey 找给定键左侧 最靠近给定键的，能取等号，记忆方法是 f是first 那就是找前面的，那就是左侧;
+    //                          ceilingKey 找给定键右侧 最靠近给定键的，能取等号；
+    //                          lowerKey 严格小于、higherKey 严格大于，这两个取不到等号
     //Integer floorKey = treeMap.floorKey(n); //floorKey返回小于或等于给定键的最大键，能取等号，如果没有这样的键，则null。lowerKey 是严格小于的，取不到等号。
     //Integer ceilingKey =  treeMap.ceilingKey(n); //ceilingKey返回大于或等于给定键的最小键，能取等号，如果没有这样的键，则null。higherKey 是严格大于的，取不到等号。
 
