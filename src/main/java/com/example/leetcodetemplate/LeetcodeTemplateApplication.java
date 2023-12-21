@@ -21,6 +21,7 @@ public class LeetcodeTemplateApplication {
 
     //11.加法和乘法 好像可以处处取余。除法 好像就不行，除法最好从思路上转化为乘法。
     //12.int的乘法 很可能超int，要把第一个乘数转成long。乘法后取模，也要先保证乘法结果对，没溢出，取模的结果才会对。
+    //13.int数组的前缀和也可能超int，要注意数据范围，如果超int 那要转为long数组。
 
 
     public static void main(String[] args) {
