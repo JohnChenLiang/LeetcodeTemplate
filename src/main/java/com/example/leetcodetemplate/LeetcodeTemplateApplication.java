@@ -132,6 +132,7 @@ public class LeetcodeTemplateApplication {
     //十进制int 转 二进制字符串。Integer.toBinaryString(4);//十进制是4 对应的 二进制是100。
     //按位异或。式子 val ^ first 等于 second，知道其中两个能求出另外一个，val = first ^ second
 
+    //排列组合里的阶乘很容易就超int、超long了，最好用 BigInteger，这样要导这个包 import java.math.BigInteger;
     //排列 A(n, m) = (n!)/(n - m)! 从n个不同元素中取出m个元素，按照一定的顺序排成一列；记忆方法是: A的大脚阶乘 上去，差的阶乘 下来。
     //例：A(3, 2) 2个人选3个座位的方法总数，第1个人选时有3个座位，第2个人选时剩2个座位，则2个人分步完成选成选座位这件事，先坐后坐也算不同 所以共有3×2=6种不同的方案。
 
