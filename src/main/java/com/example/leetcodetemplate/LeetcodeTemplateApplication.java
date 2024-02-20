@@ -493,4 +493,50 @@ public class LeetcodeTemplateApplication {
 //         if (root.left != null) vis(root.left, list, cnt + 1);
 //         if (root.right != null) vis(root.right, list, cnt + 1);
 //     }
+
+
+
+    //Z函数模板。灵神的。Z函数返回一个数组，数组里是每个位置跟原字符串的最长公共前缀长度。O(n)。
+    static int[] zFunction(String a) {
+        int n = a.length();
+        char[] s = a.toCharArray();
+        int[] z = new int[n];
+        z[0] = n;
+        int l = 0;
+        int r = 0;
+        for (int i = 1; i < n; i++) {
+            if (i <= r) {
+                z[i] = Math.min(z[i - l], r - i + 1);
+            }
+            while (i + z[i] < n && s[z[i]] == s[i + z[i]]) {
+                l = i;
+                r = i + z[i];
+                z[i]++;
+            }
+        }
+        return z;
+    }
+
+
+//    //Z函数模板。珂朵莉大佬的。Z函数返回一个数组，数组里是每个位置跟原字符串的最长公共前缀长度。O(n)。
+//    static int[] zFunction(String a) {
+//        char[] s = a.toCharArray();
+//        int n = s.length;
+//        int[] z = new int[n];
+//        z[0] = n;
+//        for (int i = 1, l = 0, r = 0; i < n; ++i) {
+//            if (i <= r && z[i - l] < r - i + 1) {
+//                z[i] = z[i - l];
+//            } else {
+//                z[i] = Math.max(0, r - i + 1);
+//                while (i + z[i] < n && s[z[i]] == s[i + z[i]]) ++z[i];
+//            }
+//            if (i + z[i] - 1 > r) {
+//                l = i;
+//                r = i + z[i] - 1;
+//            }
+//        }
+//        return z;
+//    }
+
 }
