@@ -149,17 +149,6 @@ public class LeetcodeTemplateApplication {
     // 数学证明是 当为偶数个时 即n为偶数时 除以2不会出问题；当为奇数个时 首项加末项 是 两个奇数相加 或 两个偶数相加，这个除以2也不会出问题。
     // 所以  正整数等差数列 公差为正整数 那它的求和公式直接用就行，不会有 类似3/2为1的问题。
 
-    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
-    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
-
-    //Collections.binarySearch 方法会返回该元素在列表中的索引，如果找不到则返回 - (插入点 + 1)。求插入点index的代码是 if (index < 0) index = -index - 1;
-    //List<Integer> list = Arrays.asList(1, 3, 4, 6, 8);
-    //int index = Collections.binarySearch(list, 4); //结果index 的值为 2
-    //int index = Collections.binarySearch(list, 5); //结果index 的值为 -4。可以根据 取负减一 得出 插入点为3
-
-    //取窗口内的第x小的，可以用两个TreeMap，一个放前x个 另一个放剩下的。结果就是 前x个的那个的lastKey。
-    //    也可以放list里，把初始 排序后 放进list，然后用Collections.binarySearch找到插入点，加一个减一个时把list维护成升序的，然后直接get要的顺序结果。
-
     //红黑树是一种二叉搜索树，节点的值需要满足以下规则：
     //-  左子树上所有节点的值小于当前节点的值
     //-  右子树上所有节点的值大于当前节点的值
@@ -186,6 +175,19 @@ public class LeetcodeTemplateApplication {
 
     //「二分」的本质是两段性，并非单调性。只要一段满足某个性质，另外一段不满足某个性质，就可以用「二分」。
     // 经常遇到的题是 所求的值是在一个范围内，这时可以用二分。因为范围内的元素都是单调递增的，单调肯定满足两段性。
+
+    //数组和list 自带的二分查找 binarySearch 返回的是插入点，保证在这点插入后 还是有序的，但不能保证 遇到重复元素时返回的是第一个重复元素的下标。
+    // 所以要 二分找 有序、未去重的第一个下标，要自己写二分，不能直接调自带函数 因为可能会不对。
+    //Arrays.binarySearch(nums, i) < 0; //看数组里有没有i，小于0 是没有，好像大于等于0 是有，返回值是下标值。这个数组要是排序的数组，底层是二分。
+    //Arrays.equals(num1, num2) //判断两个数组是否相同的一行写法。底层也是通过一遍for循环实现的。
+
+    //Collections.binarySearch 方法会返回该元素在列表中的索引，如果找不到则返回 - (插入点 + 1)。求插入点index的代码是 if (index < 0) index = -index - 1;
+    //List<Integer> list = Arrays.asList(1, 3, 4, 6, 8);
+    //int index = Collections.binarySearch(list, 4); //结果index 的值为 2
+    //int index = Collections.binarySearch(list, 5); //结果index 的值为 -4。可以根据 取负减一 得出 插入点为3
+
+    //取窗口内的第x小的，可以用两个TreeMap，一个放前x个 另一个放剩下的。结果就是 前x个的那个的lastKey。
+    //    也可以放list里，把初始 排序后 放进list，然后用Collections.binarySearch找到插入点，加一个减一个时把list维护成升序的，然后直接get要的顺序结果。
 
     //看别人说 可以二分 逼近到[lo, hi] 两个值，所以出来循环后只要判断一下 lo 和 hi 就行了。这样可以避免考虑 取中值时要不要加一。
 
