@@ -497,7 +497,7 @@ public class LeetcodeTemplateApplication {
 //         if (root.right != null) vis(root.right, list, cnt + 1);
 //     }
 
-
+    //java的startWith底层好像不是字典树。
 
     //Z函数模板。灵神的。Z函数返回一个数组，数组里是每个位置跟原字符串的最长公共前缀长度。O(n)。
     static int[] zFunction(String a) {
