@@ -191,6 +191,32 @@ public class LeetcodeTemplateApplication {
 
     //看别人说 可以二分 逼近到[lo, hi] 两个值，所以出来循环后只要判断一下 lo 和 hi 就行了。这样可以避免考虑 取中值时要不要加一。
 
+    //二分取中值 没加一，那下面if-else判断就要加一;  //而且这样的二分查找 遇到数组里有重复值 返回的是第一个重复值的下标。
+    //二分取中值 加一了，那下面if-else判断就要减一？而且中值加一了 也要注意会不会越界。 //而且这样的二分查找 遇到数组里有重复值 返回的是最后一个重复值的下标。
+
+//    public int findPeakElement(int[] nums) {
+//        int n = nums.length;
+//        int l = 0, r = n - 1;
+//        while (l < r) {
+//            int mid = (l + r) >>> 1; //二分取中值 没加一
+//            if (nums[mid] > nums[mid + 1]) r = mid; //二分取中值 没加一，那[2,3]、[3,4] 取中值取不到r，所以下标 mid+1 不会越界
+//            else l = mid + 1; //二分取中值 没加一，那下面if-else判断就要加一;
+//        }
+//        return r;
+//    }
+//
+//    public int findPeakElement(int[] nums) {
+//        int n = nums.length;
+//        if (n == 1) return 0;
+//        int l = 0, r = n - 1;
+//        while (l < r) {
+//            int mid = (l + r + 1) >>> 1;  //二分取中值 加一了
+//            if (nums[mid] > nums[mid - 1]) l = mid;  //二分取中值 加一了，那[2,3]、[3,4] 取中值取不到l，所以下标 mid-1 不会越界
+//            else r = mid - 1; //二分取中值 加一了，那下面if-else判断就要减一
+//        }
+//        return r;
+//    }
+
     //二分题 必写代码：
     //if () l = m + 1; //取右半边
     //else r = m; //取左半边，包含中值。
