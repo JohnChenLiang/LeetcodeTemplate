@@ -568,4 +568,8 @@ public class LeetcodeTemplateApplication {
 //        return z;
 //    }
 
+
+    //引用当key 放到map里 也能正常get到。参考力扣662. 二叉树最大宽度。把节点当key放到map里 也能get到。
+    // 因为比较的是地址，同个地址还是能get到的。但如果是两个同样组成的数组，那就get不到了，因为是两不同的地址。
+
 }
