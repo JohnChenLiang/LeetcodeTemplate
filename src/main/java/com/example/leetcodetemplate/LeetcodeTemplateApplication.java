@@ -571,5 +571,6 @@ public class LeetcodeTemplateApplication {
 
     //引用当key 放到map里 也能正常get到。参考力扣662. 二叉树最大宽度。把节点当key放到map里 也能get到。
     // 因为比较的是地址，同个地址还是能get到的。但如果是两个同样组成的数组，那就get不到了，因为是两不同的地址。
-
+    //担心 对象是引用，不好当map的key 可以用 Pair 类。
+    // Pair 类，getKey、getValue。对象是引用，不好当map的key，然而又要用value 记录信息，那就要用 Pair 类了。
 }
