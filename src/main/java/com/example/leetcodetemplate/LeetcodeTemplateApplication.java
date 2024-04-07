@@ -569,6 +569,53 @@ public class LeetcodeTemplateApplication {
 //        return z;
 //    }
 
+    //前缀和 求区间和是 O(1),单点更新是O(n),所以频繁单点更新会超时。
+    // 给了前缀和 能干什么呢？
+    // 1.单点修改 add(x, u)，查询前缀和 query(x)
+    // 2.单点修改 add(x, u)，单点查询 query(x) - query(x - 1)
+    // 3.单点修改 add(x, u)，区间查询 query(r) - query(l - 1)
+    // 4.区间修改 add(l, d); add(r + 1, -d); 单点查询 a[x] + query(x)  a[x]是啥？这单点查询是不是应该跟上面的2一样？
+    //树状数组 求区间和是 O(logn),单点更新是O(logn)。所以可以频繁单点更新。
+
+    //307. 区域和检索 - 数组可修改。
+    //树状数组模板
+    // 上来先把三个方法写出来
+//    int[] tree;
+//    int n;
+//    int[] arr;
+//    int lowbit(int x) {
+//        return x & -x;
+//    }
+//    // 查询前缀和的方法
+//    int query(int x) {
+//        int ans = 0;
+//        for (int i = x; i > 0; i -= lowbit(i)) ans += tree[i];
+//        return ans;
+//    }
+//    // 在树状数组 x 位置中增加值 u
+//    void add(int x, int u) {
+//        for (int i = x; i <= n; i += lowbit(i)) tree[i] += u;
+//    }
+//
+//
+//    // 初始化「树状数组」，要默认数组是从 1 开始
+//    public NumArray(int[] nums) {
+//        n = nums.length;
+//        arr = nums;
+//        tree = new int[n + 1];
+//        for (int i = 0; i < n; i++) add(i + 1, nums[i]);
+//    }
+//
+//    // 原有的值是 nums[index]，要使得修改为 val，需要增加 val - nums[index]
+//    public void update(int index, int val) {
+//        add(index + 1, val - arr[index]);
+//        arr[index] = val;
+//    }
+//
+//    //树状数组 默认数组是从 1 开始。所以返回的区间是 [left+1, right+1]
+//    public int sumRange(int left, int right) {
+//        return query(right + 1) - query(left);
+//    }
 
     //引用当key 放到map里 也能正常get到。参考力扣662. 二叉树最大宽度。把节点当key放到map里 也能get到。
     // 因为比较的是地址，同个地址还是能get到的。但如果是两个同样组成的数组，那就get不到了，因为是两不同的地址。
