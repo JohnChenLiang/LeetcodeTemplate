@@ -364,8 +364,56 @@ public class LeetcodeTemplateApplication {
     //dp 要递推方向（例如左上到右下的递推顺序），如果 上下左右都能走，然后能回头的，就不能dp了。
     //这时 求最短路 可以用迪杰斯克拉。
 
+    //优先队列的迪杰斯克拉，用list建邻接表。链式向前星存图 不好记，如果不是极致优化则不用，最好用list。
+    // O(MlogM)。应该是通杀的，稠密图 M ≈ N^2，代入的话O(2N^2logN) = O(N^2logN)，也就比朴素版的O(N^2) 多个log，应该都通杀不影响的。
+    public int networkDelayTime(int[][] times, int n, int k) {
+        //邻接表。数组里放list，list里再放数组。
+        List<int[]>[] g = new List[n + 1];
+        //要初始化邻接表，因为到这点后 可能就没别的路走了，不能对null遍历 所以要初始化。
+        for (int i = 0; i <= n; i++)
+            g[i] =  new ArrayList<>();
 
-    //优先队列的 迪杰斯克拉 + 基于数组的邻接表。O(m + n + (n + m)logm) 时间复杂度 先这样取最大的，因为我也没看懂怎么推的。
+        //建图
+        for (int[] e : times) {
+            g[e[0]].add(new int[]{e[1], e[2]});
+        }
+
+        boolean[] vis = new boolean[n + 1]; //记录点有没有被访问过。
+        //记录源点到其他点的距离。要都初始化为 INF，然后自身到自身是0；
+        int[] dist = new int[n + 1];
+        int INF = Integer.MAX_VALUE / 2;
+        for (int i = 0; i <= n; i++) dist[i] = INF;
+        dist[k] = 0;
+
+        //优先队列。放数组[点编号，到k的距离]，到k的距离最小的在最前。
+        PriorityQueue<int[]> q = new PriorityQueue<>((a,b) -> a[1] - b[1]);
+        q.add(new int[]{k, 0});
+        while (q.size() >= 1) {
+            int[] poll = q.poll();
+            if (vis[poll[0]]) continue; //更新过就跳过
+
+            vis[poll[0]] = true;
+
+            //上面是 未遍历的最短边 k到poll[0]
+            //遍历起点poll[0] 能到的点end，end[0]是点编号，end[1]是权值
+            for (int[] end : g[poll[0]]) {
+                //k到end[0] > k到poll[0] + poll[0]到end[0]。
+                if (dist[end[0]] > poll[1] + end[1]) {
+                    dist[end[0]] = poll[1] + end[1];
+                    q.add(new int[]{end[0], dist[end[0]]});
+                }
+            }
+        }
+
+        int max = dist[1];
+        for (int i = 1; i <= n; i++)
+            max = Math.max(max, dist[i]);
+
+        return max == INF ? -1 : max;
+    }
+
+    //优先队列的 迪杰斯克拉 + 基于数组的邻接表。链式向前星存图 不好记，如果不是极致优化则不用，最好用list。
+    // O(m + n + (n + m)logm) 时间复杂度
     //743. 网络延迟时间。迪杰斯克拉 模板题。
     public static int networkDelayTime22222222222222222222222222222222222222222222(int[][] times, int n, int k) {
         int m = times.length;
