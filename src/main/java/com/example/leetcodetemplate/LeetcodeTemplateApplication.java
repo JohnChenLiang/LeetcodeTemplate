@@ -705,16 +705,14 @@ public class LeetcodeTemplateApplication {
 //    //向量法 往各方向走的少代码量写法。 8个方向 米字。东，东南，南，西南，西，西北，北，东北
 //    int[] x = new int[]{1, 1, 0, -1, -1, -1,  0,  1};
 //    int[] y = new int[]{0, 1, 1, 1,   0, -1, -1, -1};
-//    int iAdd = i + x[k];
-//    int jAdd = j + y[k];
 //    for (int k = 0; k < 8; k++) {
-//        int iAdd = i + x[k];
-//        int jAdd = j + y[k];
+//        int iAdd = i + y[k]; //行变换是要加y的
+//        int jAdd = j + x[k]; //列变换是要加x的
 //        while (0 <= iAdd && iAdd < m && 0 <= jAdd && jAdd < n) {
 //
 //            //向量法 遍历向量数组时 累加元素值，方向不变，但能沿着方向走更远。
-//            iAdd += x[k];
-//            jAdd += y[k];
+//            iAdd += y[k];
+//            jAdd += x[k];
 //        }
 //    }
 
