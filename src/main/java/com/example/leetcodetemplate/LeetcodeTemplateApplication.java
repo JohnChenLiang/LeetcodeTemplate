@@ -690,6 +690,37 @@ public class LeetcodeTemplateApplication {
      */
 
 
+    //并查集，把连通的点 归为同一个祖宗。
+    // 通过数组来记录，下标是该点的编号，元素值是该点的祖宗。
+
+    //题目的函数里 要放这些。
+    //p放该编号的祖宗，初始祖宗默认为自身。
+//    int[] p = new int[n];
+//    for (int i = 0; i < n; i++) p[i] = i;
+
+//    //先求出两个的祖宗的编号
+//    int rootX = find(X, p);
+//    int rootY = find(Y, p);
+//
+//    //如果祖宗相同，说明本来就在一块区域里。如果这种情况要处理，那要去掉注释写。
+//    //if (rootX == rootY) {}
+//
+//    //把祖宗编号大的 合并到 祖宗编号小的上。
+//    // 即把 对应祖宗更新为 编号小的祖宗。赋值的等号的右边是 编号小的祖宗。
+//    if (rootX > rootY) p[rootX] = rootY;
+//    if (rootX < rootY) p[rootY] = rootX;
+
+
+    //并查集核心函数。用来找当前祖宗，并把过程中 一路上的点的祖宗 更新为最后找到的祖宗。
+//    public static int find(int x, int[]p) {
+//        if (x != p[x])
+//            p[x] = find(p[x], p);
+//
+//        return p[x];
+//    }
+
+
+
     //向量法 往各方向走的少代码量写法。 上下左右。
 //    int[] x = new int[]{0, 0, -1, 1};
 //    int[] y = new int[]{-1, 1, 0, 0};
