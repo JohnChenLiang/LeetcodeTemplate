@@ -747,4 +747,9 @@ public class LeetcodeTemplateApplication {
 //        }
 //    }
 
+    //Python的 @cache 不能接收 可变对象。比如 列表list、字典dict(是java中的map)、集合set，因为他们是可变对象。
+    //Python中，数值类型(int和float)、字符串str、元组tuple都是不可变对象。
+    //Python 递归函数写在函数内部 是最佳实践，可以共享主函数里的东西。
+    //听说 列表之类的@cache可以考虑用frozenlist frozenset
+
 }
