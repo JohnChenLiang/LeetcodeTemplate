@@ -654,7 +654,8 @@ public class LeetcodeTemplateApplication {
 //
 //
 //    // 初始化「树状数组」，要默认数组是从 1 开始
-//    public NumArray(int[] nums) {
+//    public void numArray(int[] nums) { //要用这个模板的话 这里要改成函数形式。多个树状数组的话 直接到力扣307的网页 抄那个类。
+//    //public NumArray(int[] nums) {
 //        n = nums.length;
 //        arr = nums;
 //        tree = new int[n + 1];
