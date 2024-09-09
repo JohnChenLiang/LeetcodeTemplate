@@ -80,15 +80,17 @@ public class LeetcodeTemplateApplication {
         SpringApplication.run(LeetcodeTemplateApplication.class, args);
     }
 
-    //Integer 超128的判断问题。用 orderDTO.getSpareMoney() != null && orderDTO.getSpareMoney().intValue() 或 避免麻烦 直接用for (int i : treeSet)
-    //    //遍历第一个map的key 看两个map的 Integer类型的value 是否相等，要用equals判断。若不等 返回false，遍历完都没返回false 就返回true。
-    //    //Integer 当值不在-128和127之间时，会创建一个新Integer对象，==判断的是内存地址是否一致。所以这里要用! 和 equals判断 不用!=判断。
-    //    boolean check (HashMap<String, Integer> checkMap, HashMap<String, Integer> wordsMap){
-    //        for (String i : checkMap.keySet()) {
-    //            if (!checkMap.get(i).equals(wordsMap.get(i))) return false;
-    //        }
-    //        return true;
-    //    }
+//    //Integer 超128的判断问题。用 orderDTO.getSpareMoney() != null && orderDTO.getSpareMoney().intValue() 或 避免麻烦 直接用for (int i : treeSet)
+//        //遍历第一个map的key 看两个map的 Integer类型的value 是否相等，要用equals判断。若不等 返回false，遍历完都没返回false 就返回true。
+//        //Integer 当值不在-128和127之间时，会创建一个新Integer对象，==判断的是内存地址是否一致。所以这里要用! 和 equals判断 不用!=判断。
+//        boolean check (HashMap<String, Integer> checkMap, HashMap<String, Integer> wordsMap){
+//            for (String i : checkMap.keySet()) {
+//                //可以用 intValue 转成int 判断。也可以用 对象的equals() 判断。
+//                if (checkMap.get(i).intValue() != wordsMap.get(i).intValue()) return false;
+//                //if (!checkMap.get(i).equals(wordsMap.get(i))) return false;
+//            }
+//            return true;
+//        }
 
     //求位数，可以转成字符数组 通过遍历减'0'来求。如果数字不是太长 也可以用除法取余加while循环来求,但这种方法要注意结果的顺序。
 
