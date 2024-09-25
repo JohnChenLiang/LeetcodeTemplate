@@ -631,6 +631,67 @@ public class LeetcodeTemplateApplication {
 //        return z;
 //    }
 
+
+//    //字符串哈希随机双模。非位运算来生成key 会常数小一点？
+//    //187. 重复的DNA序列。
+//    //可以当作字符串哈希的入门题。
+//    //返回所有在 DNA 分子中出现不止一次的 长度为 10 的序列(子字符串)
+//    // 结果只用加一次
+//    //字符串单模哈希正确率不高。要双模哈希。
+//    //最终两个哈希值处理成一个key，key = subHash1 * MOD1 + subHash2;
+//    private static final Random RANDOM = new Random(); //取随机数 这种写法会快点
+//
+//    public List<String> findRepeatedDnaSequences(String s) {
+//        char[] t = s.toCharArray();
+//        int n = t.length;
+//
+//        //字符串双模哈希。还加了随机数。。
+//        // 多项式字符串哈希（方便计算子串哈希值）
+//        // 哈希函数 hash(s) = s[0] * base^(n-1) + s[1] * base^(n-2) + ... + s[n-2] * base + s[n-1]
+//        //  上面的^是幂次不是异或。第一个幂次是 n-1，第二个是 n-2...第n个就是 n-n = 0次幂 即为1了。
+//        //   s[0]会被乘 n-1 次base，s[1]会被乘 n-2 次base ... 以此类推。
+//        long MOD1 = 998244353L + RANDOM.nextInt((int)1e9);
+//        long BASE1 = 233L + RANDOM.nextInt((int)1e3);
+//        long MOD2 = 998244353L + RANDOM.nextInt((int)1e9);
+//        long BASE2 = 233L + RANDOM.nextInt((int)1e3);
+//        long[] powBase1 = new long[n + 1]; // powBase[i] = base^i
+//        long[] powBase2 = new long[n + 1]; // powBase[i] = base^i
+//        long[] preHash1 = new long[n + 1]; // 前缀哈希值 preHash[i] = hash(target[0] 到 target[i-1])
+//        long[] preHash2 = new long[n + 1]; // 前缀哈希值 preHash[i] = hash(target[0] 到 target[i-1])
+//        powBase1[0] = 1L;
+//        powBase2[0] = 1L;
+//        for (int i = 0; i < n; i++) {
+//            powBase1[i + 1] = powBase1[i] * BASE1 % MOD1;
+//            powBase2[i + 1] = powBase2[i] * BASE2 % MOD2;
+//            preHash1[i + 1] = (preHash1[i] * BASE1 + t[i]) % MOD1; // 秦九韶算法计算多项式哈希
+//            preHash2[i + 1] = (preHash2[i] * BASE2 + t[i]) % MOD2; // 秦九韶算法计算多项式哈希
+//        }
+//
+//        List<String> list = new ArrayList<>();
+//        HashMap<Long, Integer> map = new HashMap<>(); //字符串双模哈希，最终的key要是long类型了
+//        //从10开始, powBase[0]是0 直接减也没事，这样可以统一起来。
+//        for (int i = 10; i <= n; i++) {
+//            //计算子串 从小到大，即 从 下标i-len+1 到 下标i 的哈希值。注意 不包含前一个的最后一个字符，但要包含到当前字符。
+//            //计算方法类似前缀和，公式是 子串s[i...j]的哈希值subHash = h[j] − h[i−1] * base[j−i+1]。
+//            // 这公式里 i-1 是为了包含上i。
+//            // 最后要多乘个base 是因为 前面求字符串的哈希值时，下标小的 在前缀里 被乘base的次数多，然后这边 要补乘到 相同的次数base
+//            //然后代入公式 subHash = h[i] - h[i - len + 1 - 1] * base[i - i + len - 1 + 1]
+//            //      计算得subHash = h[i] - h[i - len] * base[len]
+//
+//            int len = 10;
+//            long subHash1 = (preHash1[i] - preHash1[i - len] * powBase1[len] % MOD1 + MOD1) % MOD1;
+//            long subHash2 = (preHash2[i] - preHash2[i - len] * powBase2[len] % MOD2 + MOD2) % MOD2;
+//            long key = subHash1 * MOD1 + subHash2; //两个哈希值 这样处理成一个key。
+//
+//            int cnt = map.getOrDefault(key, 0);
+//            if (cnt == 1) list.add(s.substring(i - 10, i)); // 结果只用加一次
+//            map.put(key, cnt + 1);
+//        }
+//
+//        return list;
+//    }
+
+
     //前缀和 求区间和是 O(1),单点更新是O(n),所以频繁单点更新会超时。
     // 给了前缀和 能干什么呢？
     // 1.单点修改 add(x, u)，查询前缀和 query(x)
