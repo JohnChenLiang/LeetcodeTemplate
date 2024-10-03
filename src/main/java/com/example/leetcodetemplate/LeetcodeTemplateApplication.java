@@ -651,10 +651,10 @@ public class LeetcodeTemplateApplication {
 //        // 哈希函数 hash(s) = s[0] * base^(n-1) + s[1] * base^(n-2) + ... + s[n-2] * base + s[n-1]
 //        //  上面的^是幂次不是异或。第一个幂次是 n-1，第二个是 n-2...第n个就是 n-n = 0次幂 即为1了。
 //        //   s[0]会被乘 n-1 次base，s[1]会被乘 n-2 次base ... 以此类推。
-//        long MOD1 = 998244353L + RANDOM.nextInt((int)1e9);
-//        long BASE1 = 233L + RANDOM.nextInt((int)1e3);
-//        long MOD2 = 998244353L + RANDOM.nextInt((int)1e9);
-//        long BASE2 = 233L + RANDOM.nextInt((int)1e3);
+//        long MOD1 = 998244353L + RANDOM.nextInt(1000000000); //nextInt((int)1e9)
+//        long BASE1 = 233L + RANDOM.nextInt(1000);
+//        long MOD2 = 998244353L + RANDOM.nextInt(1000000000); //nextInt((int)1e9)
+//        long BASE2 = 233L + RANDOM.nextInt(1000);
 //        long[] powBase1 = new long[n + 1]; // powBase[i] = base^i
 //        long[] powBase2 = new long[n + 1]; // powBase[i] = base^i
 //        long[] preHash1 = new long[n + 1]; // 前缀哈希值 preHash[i] = hash(target[0] 到 target[i-1])
