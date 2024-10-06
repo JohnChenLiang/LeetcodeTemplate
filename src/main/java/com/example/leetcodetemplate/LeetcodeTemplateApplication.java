@@ -34,6 +34,7 @@ public class LeetcodeTemplateApplication {
     //17.dfs跟dp 一样能正向推 也能反向推，选好想好写的来。正向和逆向dfs 是根据递归终止条件来吗？
     //     正向dfs不断扩展开求所有的方案数，反向dfs求最优值？ 反向dfs是跟正向dp对应，正向dp 也是在当前 找前面的最优，反向dfs也是这样。
     //18.类似 同条竖线上有多个值的问题，可以 延迟添加 解法。
+    //19.dfs型的dp，找子问题。
 
     public static void main(String[] args) {
         //ASCII码 空格是32 '0'是48  'A' 是65，'a' 是97，相差32
