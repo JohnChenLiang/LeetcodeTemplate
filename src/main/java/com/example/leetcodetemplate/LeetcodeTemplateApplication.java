@@ -35,6 +35,7 @@ public class LeetcodeTemplateApplication {
     //     正向dfs不断扩展开求所有的方案数，反向dfs求最优值？ 反向dfs是跟正向dp对应，正向dp 也是在当前 找前面的最优，反向dfs也是这样。
     //18.类似 同条竖线上有多个值的问题，可以 延迟添加 解法。
     //19.dfs型的dp，找子问题。
+    //20.数对题(i, j) 很可能 把数组排序下 也不影响结果的。一般地，排序后的一对下标 (i',j')，一定有一个与之对应的排序前的 (i,j)。
 
     public static void main(String[] args) {
         //ASCII码 空格是32 '0'是48  'A' 是65，'a' 是97，相差32
